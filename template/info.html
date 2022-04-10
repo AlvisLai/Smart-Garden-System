@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Camera Project</title>
+</head>
+<body>
+    <h1>Project</h1>
+    <img src="{{ url_for('stream_video') }}"><br/>
+    <button id="recordStartBTN" type="button" onClick="startRecord()">Star Record Video</button>
+    <button id="recordStopBTN" type="button" onClick="stopRecord()" disabled>Stop Record Video</button>
+    <button id="downloadBTN" type="button" onClick="downRecord()" disabled>Download Video</button>
+    <div>
+        <label for="logBox">Log:</label><br/>
+        <textarea id="logBox" name="logBox" rows="20" cols="50"></textarea>
+    </div>
+    <script>
+        async function startRecord(){
+          let response =  await fetch("/startRecord");
+          if(response.ok){
+           let resp = await response.json(); 
+           result = resp.status
+           window.localStorage.setItem('filename', resp.filename);
+           document.getElementById("recordStartBTN").disabled = true;
+           document.getElementById("recordStopBTN").disabled = false;
+           document.getElementById("downloadBTN").disabled = true;
+           console.log("result is",resp)
+          }else{
+           console.error("Problem With Server")
+          }
+        }
+        
+        async function stopRecord(){
+          let response =  await fetch("/stopRecord");
+          if(response.ok){
+           let resp = await response.json(); 
+           result = resp.status
+           console.log("result is",resp)
+           document.getElementById("recordStopBTN").disabled = true;
+           document.getElementById("recordStartBTN").disabled = false;
+           document.getElementById("downloadBTN").disabled = false;
+          }else{
+           console.error("Problem With Server")
+          }
+        }
+        
+        async function downRecord(){
+            window.open('/downRecord?filename=' + window.localStorage.filename);
+        }
+
+        async function getText(){
+          let response = await fetch("/getLog");
+          if(response.ok){
+            let resp = await response.json();
+            console.log(resp)
+            const logboxId = document.getElementById("logBox")
+            result = "";
+            resp['text'].forEach(element => result += element + "\n");
+            logboxId.value = result;
+          }
+        }
+        getText()
+        setInterval(getText, 1000);
+    </script>
+</body>
+</html>
+
