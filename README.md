@@ -23,12 +23,12 @@ humidity detection.
 	
 ## Hardware requirement
 
-*5mp camera
-*DHT11 sensor
-*LDR snesor
-*ADS7830
-*water pump
-*relay
+* 5mp camera
+* DHT11 sensor
+* LDR snesor
+* ADS7830
+* water pump
+* relay
 	
 
 ## Getting Started
@@ -64,7 +64,7 @@ node-red-node-pi-gpio
    node-red-start
    ```
 3. Import the json into Node-Red
-   ```
+   ```json
    [
     {
         "id": "d757dbb1.993928",
@@ -1375,7 +1375,8 @@ node-red-node-pi-gpio
         "hidden": false
     }
 ]
-   ```
+```
+
 4. Access http://localhost:1880/ui for the control dashboard
    
 <!-- LICENSE -->
