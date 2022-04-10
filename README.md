@@ -1,8 +1,8 @@
 # Smart-Garden-System
-Smart Garden System using Node-Red
+Smart Garden System using Node-Red and Raspberry PI
 
 ## About The Project
-An Node-Red project that smart garden system, including 
+An Node-Red based Smart Garden System, including the following features
 light detection and auto light switch, 
 auto watering, 
 live stream video, 
@@ -42,7 +42,6 @@ Install the following packages for Raspberry PI
   sudo pip install picamera
   pip install paho-mqtt
   pip install Flask
-  pip install opencv-python
   ```
 
 Install the following packages for Node-Red
