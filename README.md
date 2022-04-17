@@ -28,7 +28,7 @@ humidity detection.
 * LDR snesor
 * ADS7830
 * water pump
-* relay
+* transistor
 	
 
 ## Getting Started
