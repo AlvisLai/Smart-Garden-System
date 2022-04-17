@@ -5,7 +5,7 @@ import paho.mqtt.client as mqtt
 
 air_value = 225 # analog soil moisture value in air
 water_value = 93 # analog soil moisture value in water
-detect_interval = 30
+detect_interval = 5
 
 # set the pin out mode of the GPIO module as GPIO.BCM
 cmd = 0x84
@@ -25,13 +25,20 @@ def detect():
         return False
 
 def convert_to_percentage(x, in_min, in_max, out_min, out_max):
-    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
+    result = (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
+    if result > 100:
+        result = 100
+    elif result < 0:
+        result = 0
+    return result
+        
 
 def main(): 
     while detect():
         value = bus.read_byte_data(address, cmd|(((chn<<2|chn>>1)&0x07)<<4))
         soil_moisture = convert_to_percentage(value, air_value, water_value, 0, 100)
         print("Soil Moisture: "+ str(round(soil_moisture)) +"%")
+        print("ADC value: "+ str(round(value)))
         client.publish("moisture/raw", value)
         client.publish("moisture/value", round(soil_moisture))
         time.sleep(detect_interval)
