@@ -2,7 +2,7 @@
     {
         "id": "d757dbb1.993928",
         "type": "tab",
-        "label": "Smart weed System",
+        "label": "Smart Garden System",
         "disabled": false,
         "info": ""
     },
@@ -480,7 +480,7 @@
         "freq": "0",
         "out": "out",
         "bcm": true,
-        "x": 1090,
+        "x": 930,
         "y": 1000,
         "wires": []
     },
@@ -498,7 +498,9 @@
         "x": 590,
         "y": 1000,
         "wires": [
-            []
+            [
+                "d8f8e066ac8ec7e6"
+            ]
         ]
     },
     {
@@ -1246,62 +1248,6 @@
                 "d0041c6298c328e2",
                 "38510be0a8562316",
                 "db5630e7.83cdc"
-            ]
-        ]
-    },
-    {
-        "id": "3ad9362758756497",
-        "type": "ui_button",
-        "z": "d757dbb1.993928",
-        "name": "",
-        "group": "eabf5f0e79fad3f0",
-        "order": 6,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "ON",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "1",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 610,
-        "y": 1120,
-        "wires": [
-            [
-                "d8f8e066ac8ec7e6"
-            ]
-        ]
-    },
-    {
-        "id": "1ca6df30a5424aa8",
-        "type": "ui_button",
-        "z": "d757dbb1.993928",
-        "name": "",
-        "group": "eabf5f0e79fad3f0",
-        "order": 7,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "OFF",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "0",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 770,
-        "y": 1200,
-        "wires": [
-            [
-                "1a812225485e85a3"
             ]
         ]
     },
